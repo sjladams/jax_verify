@@ -83,7 +83,7 @@ def get_dual_config():
   return config
 
 
-def get_config(model_name='mnist_mlp_1_128'):
+def get_config(model_name='mnist_mlp_1_512'):
   """Main configdict."""
 
   if model_name.startswith('mnist_mlp_1'):
@@ -108,7 +108,7 @@ def get_config(model_name='mnist_mlp_1_128'):
   config.assets_dir = '/tmp/jax_verify'  # directory to download data and models
 
   config.seed = 23
-  config.use_gpu = True
+  config.use_gpu = False
   config.spec_type = 'adversarial_softmax'
   config.labels_in_distribution = []
   config.use_best = False  # PGA may be overly optimistic
@@ -117,14 +117,14 @@ def get_config(model_name='mnist_mlp_1_128'):
   config.problem.dataset = dataset
   config.problem.dataset_idx = 0  # which example from dataset to verify?
   config.problem.target_label_idx = 0  # which class to target?
-  config.problem.epsilon_unprocessed = 0.001  # radius before preprocessing
+  config.problem.epsilon_unprocessed = 0.025  # radius before preprocessing
   config.problem.scale_center = False
   config.problem.num_std_for_bound = num_std_for_bound
 
   # check adversary cannot bring loss below feasibility_margin
   config.problem.feasibility_margin = 0.0
 
-  config.problem.model_name = 'mnist_mlp_1_128'
+  config.problem.model_name = model_name
 
   config.dual = get_dual_config()
   config.attack = get_attack_config()

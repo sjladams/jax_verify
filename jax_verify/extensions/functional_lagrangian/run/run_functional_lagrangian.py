@@ -36,7 +36,7 @@ from ml_collections import config_flags
 PROJECT_PATH = os.getcwd()
 
 config_flags.DEFINE_config_file(
-    'config', f'{PROJECT_PATH}/configs/config_ood_stochastic_model.py',
+    'config', f'{PROJECT_PATH}/configs/config_adv_stochastic_model.py',
     'ConfigDict for the experiment.')
 
 FLAGS = flags.FLAGS
